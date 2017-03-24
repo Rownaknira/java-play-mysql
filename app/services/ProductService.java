@@ -6,7 +6,6 @@ import daos.ProductDAO;
 import models.Product;
 
 import java.util.List;
-import java.util.Random;
 
 /**
  * Created by rownak on 3/23/17.
@@ -25,10 +24,10 @@ public class ProductService {
     }
 
     public void create(Product product) {
-        Random random = new Random();
-        product.setId(random.nextInt(999999999 + 1 - 1) + 1);
         productDAO.createProduct(product);
     }
+
+    public Product getProductDetails(Integer id) { return productDAO.selectOne(id);}
 
     public Boolean delete(Integer id) {
         return productDAO.deleteProduct(id);
@@ -40,7 +39,11 @@ public class ProductService {
             return false;
         }
         else {
-            return productDAO.updateProduct(id, product);
+            existingProduct.setCode(product.getCode());
+            existingProduct.setName(product.getName());
+            existingProduct.setSpecification(product.getSpecification());
+            productDAO.updateProduct(existingProduct);
+            return true;
         }
     }
 }

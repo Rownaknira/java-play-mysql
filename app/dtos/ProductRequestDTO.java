@@ -7,7 +7,6 @@ public class ProductRequestDTO {
     private String name;
     private String code;
     private String specification;
-    private Integer categoryId;
 
     public String getName() {
         return name;
@@ -31,13 +30,5 @@ public class ProductRequestDTO {
 
     public void setSpecification(String specification) {
         this.specification = specification;
-    }
-
-    public Integer getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(Integer categoryId) {
-        this.categoryId = categoryId;
     }
 }
