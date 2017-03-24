@@ -1,23 +1,23 @@
 package models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.io.Serializable;
+
+import static javax.persistence.GenerationType.IDENTITY;
 
 /**
  * Created by rownak on 8/26/16.
  */
 @Entity
-@Table(name = "product")
-public class Product {
+@Table(name = "products")
+public class Product implements Serializable {
     @Id
+    @GeneratedValue(strategy = IDENTITY)
+    @Column(name = "id", unique = true, nullable = false)
     private Integer id;
     private String name;
     private String code;
     private String specification;
-    @Column(name = "category_id")
-    private Integer categoryId;
 
     public Integer getId() {
         return id;
@@ -49,13 +49,5 @@ public class Product {
 
     public void setSpecification(String specification) {
         this.specification = specification;
-    }
-
-    public Integer getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(Integer categoryId) {
-        this.categoryId = categoryId;
     }
 }

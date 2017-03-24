@@ -47,10 +47,18 @@ public class ProductController extends Controller {
             return badRequest(jsonError);
         }
         Product product = modelMapper.map(productForm.get(), Product.class);
-
         productService.create(product);
 
         return ok(Json.toJson("Successfully created"));
+    }
+
+    public Result showProductDetails(Integer id) {
+        if (productService.getProductDetails(id) == null) {
+            return ok("Product not found");
+        }
+        else {
+            return ok(Json.toJson(productService.getProductDetails(id)));
+        }
     }
 
     public Result deleteProduct(Integer id) {
