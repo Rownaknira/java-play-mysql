@@ -1,5 +1,6 @@
 package controllers;
 
+import authentication.AuthenticateUser;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.google.inject.Inject;
 import dtos.ProductRequestDTO;
@@ -12,6 +13,7 @@ import play.data.FormFactory;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
+import play.mvc.Security;
 import services.ProductService;
 
 import java.util.List;
@@ -19,6 +21,7 @@ import java.util.List;
 /**
  * Created by rownak on 3/23/17.
  */
+@Security.Authenticated(AuthenticateUser.class)
 public class ProductController extends Controller {
     private final ProductService productService;
     private final ModelMapper modelMapper;

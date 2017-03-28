@@ -10,3 +10,7 @@ POST    /products                   controllers.ProductController.createProduct(
 DELETE  /products/:id               controllers.ProductController.deleteProduct(id: Integer)
 PUT     /products/:id               controllers.ProductController.updateProduct(id: Integer)
 GET     /products/:id               controllers.ProductController.showProductDetails(id: Integer)
+
+POST    /users                      controllers.UserController.createUser()
+
+POST    /login                      controllers.SessionController.login()
